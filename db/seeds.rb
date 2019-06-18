@@ -1,7 +1,21 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+u1 = User.create(name: "Billy")
+u2 = User.create(name: "Susie")
+u2 = User.create(name: "Joey")
+u2 = User.create(name: "Jessie")
+u2 = User.create(name: "Pram")
+
+a1 = Author.create(name: "Herman Melville")
+a2 = Author.create(name: "Stephen King")
+a3 = Author.create(name: "Nora Roberts")
+
+g1 = Genre.create(name: "Adventure")
+g2 = Genre.create(name: "Mystery")
+g3 = Genre.create(name: "Biography")
+
+b1 = Book.create(title: "Moby Dick", description: "Obessions", genre_id: 1, author_id: 1, user_id: 1)
+b2 = Book.create(title: "It", description: "Clown", genre_id: 2, author_id: 2, user_id: 1)
+b3 = Book.create(title: "Carrie", description: "Crazy", genre_id: 3, author_id: 2, user_id: 2)
+b4 = Book.create(title: "My Life", description: "Here's how it goes", genre_id: 3, author_id: 3, user_id: 2)
+b5 = Book.create(title: "A Whale's Life", description: "Story of a whale author", genre_id: 3, author_id: 1, user_id: 2)
+b6 = Book.create(title: "Ms. Roberts And The Car", description: "A baffling tale", genre_id: 1, author_id:3, user_id: 3)
+b7 = Book.create(title: "Stand", description: "About standing", genre_id: 2, author_id: 2, user_id: 4)
