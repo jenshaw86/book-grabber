@@ -1,0 +1,8 @@
+<h3><%= @user.name %>'s Page</h3>
+
+<h4>Library</h4>
+<ul>
+	<% @user.books.each do |book| %>
+		<li><%= link_to book.title, book_path(book) %></li>
+	<% end %> 
+</ul>
