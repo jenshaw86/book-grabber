@@ -2,3 +2,9 @@
 <%= @book.title %><br>
 <%= @book.author.name %><br>
 <%= @book.description %><br>
+
+<%= form_for @transaction do |f| %>
+	<%= f.hidden_field :book_id, value: @book.id %>
+	<%= f.hidden_field :receiver_id, value: @book.user_id %> 	
+	<%= f.submit "Create" %>
+<% end %>
