@@ -10,6 +10,12 @@ class TransactionsController < ApplicationController
 		@transaction = Transaction.create(transaction_params)
 	end
 	
+	def accept
+		
+	end
+
+	def decline
+	end
 	private
 	
 	def transaction_params

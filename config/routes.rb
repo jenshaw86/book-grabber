@@ -14,4 +14,7 @@ Rails.application.routes.draw do
   post "/logout", to: "sessions#destroy"
   
   get "/tasks", to: "users#tasks"
+
+  get "/accept", to: "transactions#accept"
+  get "/decline", to: "transactions#decline"
 end
