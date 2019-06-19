@@ -11,6 +11,11 @@
 
   <body>
     <h1>Welcome to Book Trader!</h1>
+    
+    <%= form_tag logout_path do %>
+    	<%= submit_tag "Logout" %>
+    <% end %>
+    
     <%= yield %>
   </body>
 </html>
