@@ -6,7 +6,6 @@ class TransactionsController < ApplicationController
 	
 	def create
 		#add column for status, add sender_id
-		#byebug
 		@transaction = Transaction.create(transaction_params)
 	end
 	
@@ -14,6 +13,6 @@ class TransactionsController < ApplicationController
 	
 	def transaction_params
 		#later on add sender_id from session data
-		params.require(:transaction).permit(:book_id, :receiver_id, :sender_id)
+		params.require(:transaction).permit(:book_id, :receiver_id, :sender_id, :open)
 	end
 end
