@@ -1,11 +1,13 @@
-<h1>Book For Show<h1>
-<%= @book.title %><br>
-<%= @book.author.name %><br>
-<%= @book.description %><br>
+<h1>Book For Show</h1>
+<p>Title: <%= @book.title %></p>
+<p>Author: <%= link_to @book.author.name, author_path(@book.author) %></p>
+<p>Genre: <%= link_to @book.genre.name, genre_path(@book.genre) %></p>
+<p>Description: <%= @book.description %></p>
+<p>Current holder: <%= link_to @book.user.name, user_path(@book.user) %></p>
 
 <%= form_for @transaction do |f| %>
 	<%= f.hidden_field :book_id, value: @book.id %>
 	<%= f.hidden_field :receiver_id, value: @book.user_id %>
 	<%= f.hidden_field :sender_id, value: session[:user_id] %> 	
-	<%= f.submit "Create" %>
+	<%= f.submit "Request Book" %>
 <% end %>
