@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
 	before_action :logged_in, only: [:show] #when adding tasks action, include :tasks
+	
 	def show
 		@user = User.find(params[:id])
 	end
@@ -18,6 +19,10 @@ class UsersController < ApplicationController
 		else
 			redirect_to new_user_path
 		end
+	end
+	
+	def tasks
+		@user = User.find(session[:user_id])
 	end
 	
 	private
