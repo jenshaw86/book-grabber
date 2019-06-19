@@ -3,6 +3,8 @@
 <%= form_tag login_path do %>
 	<label>Name: </label>
 	<%= text_field_tag "name" %>
+	<label>Password: </label>
+	<%= password_field_tag "password" %>
 	<%= submit_tag "Login" %>
 <% end %>
 <h6>Need to <a href="/users/new">sign up</a>?</h6>

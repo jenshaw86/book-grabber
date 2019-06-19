@@ -11,7 +11,7 @@ class UsersController < ApplicationController
 	def create
 		@user = User.new(user_params)
 		
-		if @user.save
+		if @user.save && user_params[:password] == user_params[:password_confirmation]
 			session[:user_id] = @user.id
 			
 			redirect_to books_path
@@ -23,6 +23,6 @@ class UsersController < ApplicationController
 	private
 	
 	def user_params
-		params.require(:user).permit(:name)
+		params.require(:user).permit(:name, :password, :password_confirmation)
 	end
 end
