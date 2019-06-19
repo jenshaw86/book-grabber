@@ -11,7 +11,7 @@ class TransactionsController < ApplicationController
 	end
 	
 	def accept
-		
+		byebug
 	end
 
 	def decline

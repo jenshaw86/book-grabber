@@ -13,11 +13,11 @@
     <% @user.received_transactions.each do |t| %>
         <li><%= link_to t.book_title, book_path(t.book) %> by <%= t.book_author %><br>
         by <%= t.sender %></li>
-        <%= form_for t accept_path do |f| %>
+        <%= form_for t, url: accept_path, method: :post do |f| %>
             <%= f.hidden_field :received_transaction_id, value: t.id %>
             <%= f.submit "Accept" %>
         <% end %>
-        <%= form_for t decline_path do |f| %>
+        <%= form_for t, url: decline_path, method: :post do |f| %>
             <%= f.hidden_field :received_transaction_id, value: t.id %>
             <%= f.submit "Decline" %>
         <% end %>

@@ -15,6 +15,6 @@ Rails.application.routes.draw do
   
   get "/tasks", to: "users#tasks"
 
-  get "/accept", to: "transactions#accept"
-  get "/decline", to: "transactions#decline"
+  post "/accept", to: "transactions#accept"
+  post "/decline", to: "transactions#decline"
 end
