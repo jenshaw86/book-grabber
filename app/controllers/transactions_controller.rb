@@ -11,7 +11,14 @@ class TransactionsController < ApplicationController
 	end
 	
 	def accept
-		byebug
+		@transaction = Transaction.find(params[:transaction][:received_transaction_id])
+		# byebug
+		@book = Book.find(@transaction.book_id)
+		@book.user_id = @transaction.sender_id
+		@book.save
+		@transaction.open = 0
+		#save transaction somehow
+		redirect_to tasks_path
 	end
 
 	def decline
