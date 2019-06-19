@@ -1,0 +1,17 @@
+<h1><%= @user.name %>'s Tasks</h1>
+
+<h3>You Requested:</h3>
+<ol>
+    <% @user.sent_transactions.each do |t| %>
+        <li><%= link_to t.book_title, book_path(t.book) %> by <%= t.book_author %><br>
+        held by <%= t.receiver %></li>
+    <% end %>
+</ol>
+
+<h3>You Received Requests for:</h3>
+    <ol>
+    <% @user.received_transactions.each do |t| %>
+        <li><%= link_to t.book_title, book_path(t.book) %> by <%= t.book_author %><br>
+        by <%= t.sender %></li>
+    <% end %>
+</ol>
