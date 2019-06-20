@@ -8,7 +8,7 @@
 <% records = Transaction.all.select do |transaction| %>
 	<% transaction.book_id == @book.id && transaction.open == 1 %>
 <% end %>
-<% if records.count == 0 %>
+<% if records.count == 0 && @book.user_id != session[:user_id] %>
 	<%= form_for @transaction do |f| %>
 		<%= f.hidden_field :book_id, value: @book.id %>
 		<%= f.hidden_field :receiver_id, value: @book.user_id %>
