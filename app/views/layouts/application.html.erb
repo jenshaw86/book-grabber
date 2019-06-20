@@ -17,8 +17,10 @@
     <% end %>
     <a href="<%= tasks_path %>">My Tasks</a>
     
-    <%= form_tag logout_path do %>
-    	<%= submit_tag "Logout" %>
+    <% if session[:user_id] != nil %>
+      <%= form_tag logout_path do %>
+        <%= submit_tag "Logout" %>
+      <% end %>
     <% end %>
     
     <%= yield %>
