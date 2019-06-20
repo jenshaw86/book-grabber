@@ -9,6 +9,7 @@ class TransactionsController < ApplicationController
 		# byebug
 		#add column for status, add sender_id
 		@transaction = Transaction.create(transaction_params)
+		redirect_to tasks_path
 	end
 	
 	def accept
