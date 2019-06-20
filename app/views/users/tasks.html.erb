@@ -45,25 +45,35 @@
 <div>
     <h3>Past Transactions:</h3>
     <div>
-        <h5>Requests made:</h5>
-        <ol>
-            <% @user.sent_transactions.select do |t| %>
+        <h4>Requests made:</h4>
+            <% closed_transactions = @user.sent_transactions.select do |t| %>
                 <% t.open == 0%>
-            <% end.each do |t| %>
-                <li><%= link_to t.book_title, book_path(t.book) %> by <%= t.book_author %><br>
-                held by <%= t.receiver_name %></li>
             <% end %>
-        </ol>
+            <% if closed_transactions.count == 0 %>
+                <span>You've never requested a book!</span>
+            <% else %>
+                <ol>
+                    <% closed_transaction.each do |t| %>
+                        <li><%= link_to t.book_title, book_path(t.book) %> by <%= t.book_author %><br>
+                        held by <%= t.receiver_name %></li>
+                    <% end %>
+                </ol>
+            <% end %>
     </div>
     <div>
-        <h5>Requests received:</h5>
-        <ol>
-            <% @user.received_transactions.select do |t| %>
-                <% t.open == 0%>
-            <% end.each do |t| %>
-                <li><%= link_to t.book_title, book_path(t.book) %> by <%= t.book_author %><br>
-                held by <%= t.receiver_name %></li>
-            <% end %>
-        </ol>
+        <h4>Requests received:</h4>
+        <% closed_transactions = @user.received_transactions.select do |t| %>
+            <% t.open == 0%>
+        <% end %>
+        <% if closed_transactions == 0 %>
+            <span>You've never received a book request.</span>
+        <% else %>
+            <ol>
+                <% closed_transactions.each do |t| %>
+                    <li><%= link_to t.book_title, book_path(t.book) %> by <%= t.book_author %><br>
+                    held by <%= t.receiver_name %></li>
+                <% end %>
+            </ol>
+        <% end %>
     </div>
 </div>
