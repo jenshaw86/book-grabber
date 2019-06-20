@@ -24,6 +24,8 @@ class UsersController < ApplicationController
 	def tasks
 		@user = User.find(session[:user_id])
 	end
+
+	# Create a new action, route, view for user's library?
 	
 	private
 	

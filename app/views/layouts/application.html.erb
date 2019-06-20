@@ -11,6 +11,9 @@
 
   <body>
     <h1>Welcome to Book Trader!</h1>
+    <a href="<%= books_path %>">Browse All Books </a>
+    <a href="<%= user_path(session[:user_id])%>">My Library</a>
+    <a href="<%= tasks_path %>">My Tasks</a>
     
     <%= form_tag logout_path do %>
     	<%= submit_tag "Logout" %>
