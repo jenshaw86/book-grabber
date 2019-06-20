@@ -6,6 +6,7 @@ class TransactionsController < ApplicationController
 	end
 	
 	def create
+		# byebug
 		#add column for status, add sender_id
 		@transaction = Transaction.create(transaction_params)
 	end
@@ -15,9 +16,9 @@ class TransactionsController < ApplicationController
 		@book = Book.find(@transaction.book_id)
 		@book.user_id = @transaction.sender_id
 		@book.save
-		byebug
+		# byebug
 		@transaction.open = 0
-		#save transaction somehow
+		@transaction.save
 		redirect_to tasks_path
 	end
 

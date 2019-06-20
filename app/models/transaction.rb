@@ -15,11 +15,11 @@ class Transaction < ApplicationRecord
         book.author.name
     end
 
-    def receiver
+    def receiver_name
         User.find(self.receiver_id).name
     end
 
-    def sender
+    def sender_name
         User.find(self.sender_id).name
     end 
 end
