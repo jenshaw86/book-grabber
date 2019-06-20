@@ -5,25 +5,28 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <h1>Book Trader</h1>
-    <a href="<%= books_path %>">Browse All Books </a>
-    <% if session[:user_id] != nil %>
-      <a href="<%= user_path(session[:user_id])%>">My Library</a>
-    <% end %>
-    <a href="<%= tasks_path %>">My Tasks</a>
-    
-    <% if session[:user_id] != nil %>
-      <%= form_tag logout_path do %>
-        <%= submit_tag "Logout" %>
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Book Grabber</a>
+    <div class="navbar-nav">
+      <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+      <% if session[:user_id] != nil %>
+        <a class="nav-item nav-link" href="/books">Browse Books</a>
+        <a class="nav-item nav-link" href="<%= user_path(session[:user_id])%>">My Library</a>
+        <a class="nav-item nav-link" href="/tasks">My Tasks</a>
+        <%= link_to "Logout", logout_path, method: :post, class: "nav-item nav-link" %>
+      <% else %>
+        <a class="nav-item nav-link" href="/login">Login</a>
+        <a class="nav-item nav-link" href="/users/new">Signup</a>
       <% end %>
-    <% end %>
-    
+    </div>
+</nav>
+   
     <%= yield %>
   </body>
 </html>
