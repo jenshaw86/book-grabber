@@ -2,15 +2,19 @@
 
 <h3>You Requested:</h3>
 <ol>
-    <% @user.sent_transactions.each do |t| %>
+    <% @user.sent_transactions.select do |t| %>
+        <% t.open == 1%>
+    <% end.each do |t| %>
         <li><%= link_to t.book_title, book_path(t.book) %> by <%= t.book_author %><br>
         held by <%= t.receiver_name %></li>
     <% end %>
 </ol>
 
 <h3>You Received Requests for:</h3>
-    <ol>
-    <% @user.received_transactions.each do |t| %>
+<ol>
+    <% @user.received_transactions.select do |t| %>
+        <% t.open == 1 %>
+    <% end.each do |t| %>
         <li><%= link_to t.book_title, book_path(t.book) %> by <%= t.book_author %><br>
         by <%= t.sender_name %></li>
         <%= form_for t, url: accept_path, method: :post do |f| %>
@@ -23,3 +27,5 @@
         <% end %>
     <% end %>
 </ol>
+
+<h3>Past Transactions</h3>
