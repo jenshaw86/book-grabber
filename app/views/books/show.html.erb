@@ -5,10 +5,15 @@
 <p>Description: <%= @book.description %></p>
 <p>Current holder: <%= link_to @book.user.name, user_path(@book.user) %></p>
 
-<%= form_for @transaction do |f| %>
-	<%= f.hidden_field :book_id, value: @book.id %>
-	<%= f.hidden_field :receiver_id, value: @book.user_id %>
-	<%= f.hidden_field :sender_id, value: session[:user_id] %>
-	<%= f.hidden_field :open, value: 1 %>
-	<%= f.submit "Request Book" %>
+<% records = Transaction.all.select do |transaction| %>
+	<% transaction.book_id == @book.id && transaction.open == 1 %>
+<% end %>
+<% if records.count == 0 %>
+	<%= form_for @transaction do |f| %>
+		<%= f.hidden_field :book_id, value: @book.id %>
+		<%= f.hidden_field :receiver_id, value: @book.user_id %>
+		<%= f.hidden_field :sender_id, value: session[:user_id] %>
+		<%= f.hidden_field :open, value: 1 %>
+		<%= f.submit "Request Book" %>
+	<% end %>
 <% end %>
