@@ -1,5 +1,4 @@
-<h3>Browse Books</h3>
-	
+<h3>Browse All Books</h3>
 <ul>
 <% @books.each do |book| %>
     <li><%= link_to book.title, book %> - <%= link_to book.author.name, book.author %></li>
