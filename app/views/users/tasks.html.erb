@@ -53,7 +53,7 @@
                 <span>You've never requested a book!</span>
             <% else %>
                 <ol>
-                    <% closed_transaction.each do |t| %>
+                    <% closed_transactions.each do |t| %>
                         <li><%= link_to t.book_title, book_path(t.book) %> by <%= t.book_author %><br>
                         held by <%= t.receiver_name %></li>
                     <% end %>

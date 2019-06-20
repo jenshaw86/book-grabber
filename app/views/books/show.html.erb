@@ -13,12 +13,13 @@
 		<%= f.hidden_field :receiver_id, value: @book.user_id %>
 		<%= f.hidden_field :sender_id, value: session[:user_id] %>
 		<%= f.hidden_field :open, value: 1 %>
-		<%= f.submit "Request Book" %>
+		<button type="submit" class="btn btn-success">Request Book</button>
 	<% end %>
 <% end %>
 
 <% if session[:user_id] == @book.user_id %>
 	<%= form_for @book, url: edit_book_path, method: :GET do |f| %>
-		<%= f.submit "Edit/Delete Book" %>
+		<button type="submit" class="btn btn-warning">Edit/Delete Book</button>		
 	<% end %>
 <% end %>
+
