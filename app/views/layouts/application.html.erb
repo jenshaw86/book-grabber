@@ -12,7 +12,7 @@
   <body>
     <h1>Welcome to Book Trader!</h1>
     <a href="<%= books_path %>">Browse All Books </a>
-    <% if session[:id] != nil %>
+    <% if session[:user_id] != nil %>
       <a href="<%= user_path(session[:user_id])%>">My Library</a>
     <% end %>
     <a href="<%= tasks_path %>">My Tasks</a>
