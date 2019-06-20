@@ -3,4 +3,8 @@ class Book < ApplicationRecord
     belongs_to :genre
     belongs_to :author
     has_many :transactions
+    
+    validates :title, presence: true
+    validates :description, presence: true
+    
 end
