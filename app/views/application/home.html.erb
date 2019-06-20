@@ -1,10 +1,23 @@
-<h3>Book Trader Service Statistics</h3>
+<h1>Welcome to Book Taker</h1>
+<div>
+    <p>Looking for a book?</p>
+    <p>Find it right here<p>
+</div>
 
-<p>Book Trader currently has <%= @users.size %> users and <%= @books.size %> books in circulation.</p>
+<div>
+    <h3>Get Started</h3>
+    <a href="<%= new_user_path %>">Sign Up</a>
+    <a href="<%= login_path %>">Log in</a> 
+</div>
 
-<p>Books span <%= @genres.size %> genres from <%= @authors.size %> authors.</p>
+<div>
+    <h4>Book Trader Service Statistics</h4>
 
-<p>Our users have made <%= @transactions.size%> transactions.</p>
+    <p>Book Trader currently has <%= @users.size %> users and <%= @books.size %> books in circulation.</p>
 
-<p>The most active trader is <%= User.most_active_name %> with <%= User.most_transactions_count %> transactions. </p>
+    <p>Books span <%= @genres.size %> genres from <%= @authors.size %> authors.</p>
 
+    <p>Our users have made <%= @transactions.size%> transactions.</p>
+
+    <p>The most active trader is <%= User.most_active_name %> with <%= User.most_transactions_count %> transactions. </p>
+</div>
