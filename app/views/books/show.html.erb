@@ -19,7 +19,7 @@
 
 <%# Needs to route to Edit Page %>
 <% if session[:user_id] == @book.user_id %>
-	<%= form_for @book do |f| %>
+	<%= form_for @book, url: edit_book_path do |f| %>
 		<%= f.submit "Edit/Delete Book" %>
 	<% end %>
 <% end %>
