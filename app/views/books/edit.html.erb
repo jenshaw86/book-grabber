@@ -1,0 +1,22 @@
+<h3>Edit Book</h3>
+
+<%= form_for @book do |f| %>
+	Title: <%= f.text_field :title %><br>
+	
+	Short Description: <%= f.text_field :description %><br>
+
+	Author: <%= f.collection_select :author_id, Author.all, :id, :name %><br>
+
+	Genre: <%= f.collection_select :genre_id, Genre.all, :id, :name %><br>
+
+	<%= f.hidden_field :user_id, value: session[:user_id] %><br>
+	
+	<%= f.submit "Submit Changes" %>
+	
+<% end %>
+
+<br>
+
+<%= form_for @book do |f| %>
+	<%= f.submit "Remove From Library" %>
+<% end %>
