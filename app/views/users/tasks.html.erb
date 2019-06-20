@@ -1,31 +1,68 @@
 <h1><%= @user.name %>'s Tasks</h1>
 
-<h3>You Requested:</h3>
-<ol>
-    <% @user.sent_transactions.select do |t| %>
+<h3>Your requests:</h3>
+    <% open_transactions = @user.sent_transactions.select do |t| %>
         <% t.open == 1%>
-    <% end.each do |t| %>
-        <li><%= link_to t.book_title, book_path(t.book) %> by <%= t.book_author %><br>
-        held by <%= t.receiver_name %></li>
     <% end %>
-</ol>
-
-<h3>You Received Requests for:</h3>
-<ol>
-    <% @user.received_transactions.select do |t| %>
-        <% t.open == 1 %>
-    <% end.each do |t| %>
-        <li><%= link_to t.book_title, book_path(t.book) %> by <%= t.book_author %><br>
-        by <%= t.sender_name %></li>
-        <%= form_for t, url: accept_path, method: :post do |f| %>
-            <%= f.hidden_field :received_transaction_id, value: t.id %>
-            <%= f.submit "Accept" %>
-        <% end %>
-        <%= form_for t, url: decline_path, method: :post do |f| %>
-            <%= f.hidden_field :received_transaction_id, value: t.id %>
-            <%= f.submit "Decline" %>
-        <% end %>
+    <% if open_transactions.count == 0 %>
+        <ul>
+            <li>You've made no book requests recently</li>
+        </ul>
+    <% else %>
+        <ol>
+            <% open_transactions.each do |t| %>
+                <li><%= link_to t.book_title, book_path(t.book) %> by <%= t.book_author %><br>
+                held by <%= t.receiver_name %></li>
+            <% end %>
+        </ol>
     <% end %>
-</ol>
+</ul>
 
-<h3>Past Transactions</h3>
+<h3>Your received requests:</h3>
+<% open_transactions = @user.received_transactions.select do |t| %>
+    <% t.open == 1 %>
+<% end %>
+<% if open_transactions.count == 0 %>
+    <ul>
+        <li>No one's requesting a book from you.</li>
+    </ul>
+<% else %>
+    <ol>
+        <% open_transactions.each do |t| %>
+            <li><%= link_to t.book_title, book_path(t.book) %> by <%= t.book_author %><br>
+            by <%= t.sender_name %></li>
+            <%= form_for t, url: accept_path, method: :post do |f| %>
+                <%= f.hidden_field :received_transaction_id, value: t.id %>
+                <%= f.submit "Accept" %>
+            <% end %>
+            <%= form_for t, url: decline_path, method: :post do |f| %>
+                <%= f.hidden_field :received_transaction_id, value: t.id %>
+                <%= f.submit "Decline" %>
+            <% end %>
+        <% end %>
+    </ol>
+<% end %>
+
+
+<h3>Past Transactions:</h3>
+<ul>
+    <li>Requests made:</li>
+    <ol>
+        <% @user.sent_transactions.select do |t| %>
+            <% t.open == 0%>
+        <% end.each do |t| %>
+            <li><%= link_to t.book_title, book_path(t.book) %> by <%= t.book_author %><br>
+            held by <%= t.receiver_name %></li>
+        <% end %>
+    </ol>
+
+    <li>Requests received:</li>
+    <ol>
+        <% @user.received_transactions.select do |t| %>
+            <% t.open == 0%>
+        <% end.each do |t| %>
+            <li><%= link_to t.book_title, book_path(t.book) %> by <%= t.book_author %><br>
+            held by <%= t.receiver_name %></li>
+        <% end %>
+    </ol>
+</ul>
