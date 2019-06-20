@@ -1,8 +1,8 @@
-u1 = User.create(name: "Billy")
-u2 = User.create(name: "Susie")
-u2 = User.create(name: "Joey")
-u2 = User.create(name: "Jessie")
-u2 = User.create(name: "Pram")
+u1 = User.create(name: "Billy", password: "Billy", password_confirmation: "Billy")
+u2 = User.create(name: "Susie", password: "Susie", password_confirmation: "Susie")
+u2 = User.create(name: "Joey", password: "Joey", password_confirmation: "Joey")
+u2 = User.create(name: "Jessie", password: "Jessie", password_confirmation: "Jessie")
+u2 = User.create(name: "Pram", password: "Pram", password_confirmation: "Pram")
 
 a1 = Author.create(name: "Herman Melville")
 a2 = Author.create(name: "Stephen King")

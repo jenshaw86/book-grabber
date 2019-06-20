@@ -23,7 +23,12 @@ class TransactionsController < ApplicationController
 	end
 
 	def decline
+		@transaction = Transaction.find(params[:transaction][:received_transaction_id])
+		@transaction.open = 0
+		@transaction.save
+		redirect_to tasks_path
 	end
+
 	private
 	
 	def transaction_params
