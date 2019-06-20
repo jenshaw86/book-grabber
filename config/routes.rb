@@ -17,4 +17,6 @@ Rails.application.routes.draw do
 
   post "/accept", to: "transactions#accept"
   post "/decline", to: "transactions#decline"
+  
+  get "/home", to: "application#home"
 end

@@ -4,4 +4,12 @@ class ApplicationController < ActionController::Base
             redirect_to login_path
         end
     end
+    
+    def home
+	    @books = Book.all
+	    @users = User.all
+	    @genres = Genre.all
+	    @authors = Genre.all
+	    @transactions = Transaction.all
+	  end
 end

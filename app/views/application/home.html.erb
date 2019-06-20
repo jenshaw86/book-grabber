@@ -1,0 +1,10 @@
+<h3>Book Trader Service Statistics</h3>
+
+<p>Book Trader currently has <%= @users.size %> users and <%= @books.size %> books in circulation.</p>
+
+<p>Books span <%= @genres.size %> genres from <%= @authors.size %> authors.</p>
+
+<p>Our users have made <%= @transactions.size%> transactions.</p>
+
+<p>The most active trader is <%= User.most_active_name %> with <%= User.most_transactions_count %> transactions. </p>
+
