@@ -1,4 +1,4 @@
-<h1><%= @genre.name %> Books</h1>
+<h3><%= @genre.name %> Books</h3>
 <ul>
     <% @genre.books.each do |book| %>
         <li><%= link_to book.title, book %></li>

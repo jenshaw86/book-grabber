@@ -1,68 +1,69 @@
 <h1><%= @user.name %>'s Tasks</h1>
+<div>
+    <h3>Your requests:</h3>
+        <% open_transactions = @user.sent_transactions.select do |t| %>
+            <% t.open == 1%>
+        <% end %>
+        <% if open_transactions.count == 0 %>
+            <span>You've made no book requests recently</span>
+        <% else %>
+            <ol>
+                <% open_transactions.each do |t| %>
+                    <li><%= link_to t.book_title, book_path(t.book) %> by <%= t.book_author %><br>
+                    held by <%= t.receiver_name %></li>
+                <% end %>
+            </ol>
+        <% end %>
+    </ul>
+</div>
 
-<h3>Your requests:</h3>
-    <% open_transactions = @user.sent_transactions.select do |t| %>
-        <% t.open == 1%>
+<div>
+    <h3>Your received requests:</h3>
+    <% open_transactions = @user.received_transactions.select do |t| %>
+        <% t.open == 1 %>
     <% end %>
     <% if open_transactions.count == 0 %>
-        <ul>
-            <li>You've made no book requests recently</li>
-        </ul>
+        <span>No one's requesting a book from you.</span>
     <% else %>
         <ol>
             <% open_transactions.each do |t| %>
                 <li><%= link_to t.book_title, book_path(t.book) %> by <%= t.book_author %><br>
-                held by <%= t.receiver_name %></li>
+                by <%= t.sender_name %></li>
+                <%= form_for t, url: accept_path, method: :post do |f| %>
+                    <%= f.hidden_field :received_transaction_id, value: t.id %>
+                    <%= f.submit "Accept" %>
+                <% end %>
+                <%= form_for t, url: decline_path, method: :post do |f| %>
+                    <%= f.hidden_field :received_transaction_id, value: t.id %>
+                    <%= f.submit "Decline" %>
+                <% end %>
             <% end %>
         </ol>
     <% end %>
-</ul>
+</div>
 
-<h3>Your received requests:</h3>
-<% open_transactions = @user.received_transactions.select do |t| %>
-    <% t.open == 1 %>
-<% end %>
-<% if open_transactions.count == 0 %>
-    <ul>
-        <li>No one's requesting a book from you.</li>
-    </ul>
-<% else %>
-    <ol>
-        <% open_transactions.each do |t| %>
-            <li><%= link_to t.book_title, book_path(t.book) %> by <%= t.book_author %><br>
-            by <%= t.sender_name %></li>
-            <%= form_for t, url: accept_path, method: :post do |f| %>
-                <%= f.hidden_field :received_transaction_id, value: t.id %>
-                <%= f.submit "Accept" %>
+<div>
+    <h3>Past Transactions:</h3>
+    <div>
+        <h5>Requests made:</h5>
+        <ol>
+            <% @user.sent_transactions.select do |t| %>
+                <% t.open == 0%>
+            <% end.each do |t| %>
+                <li><%= link_to t.book_title, book_path(t.book) %> by <%= t.book_author %><br>
+                held by <%= t.receiver_name %></li>
             <% end %>
-            <%= form_for t, url: decline_path, method: :post do |f| %>
-                <%= f.hidden_field :received_transaction_id, value: t.id %>
-                <%= f.submit "Decline" %>
+        </ol>
+    </div>
+    <div>
+        <h5>Requests received:</h5>
+        <ol>
+            <% @user.received_transactions.select do |t| %>
+                <% t.open == 0%>
+            <% end.each do |t| %>
+                <li><%= link_to t.book_title, book_path(t.book) %> by <%= t.book_author %><br>
+                held by <%= t.receiver_name %></li>
             <% end %>
-        <% end %>
-    </ol>
-<% end %>
-
-
-<h3>Past Transactions:</h3>
-<ul>
-    <li>Requests made:</li>
-    <ol>
-        <% @user.sent_transactions.select do |t| %>
-            <% t.open == 0%>
-        <% end.each do |t| %>
-            <li><%= link_to t.book_title, book_path(t.book) %> by <%= t.book_author %><br>
-            held by <%= t.receiver_name %></li>
-        <% end %>
-    </ol>
-
-    <li>Requests received:</li>
-    <ol>
-        <% @user.received_transactions.select do |t| %>
-            <% t.open == 0%>
-        <% end.each do |t| %>
-            <li><%= link_to t.book_title, book_path(t.book) %> by <%= t.book_author %><br>
-            held by <%= t.receiver_name %></li>
-        <% end %>
-    </ol>
-</ul>
+        </ol>
+    </div>
+</div>
