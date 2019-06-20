@@ -38,7 +38,9 @@ class BooksController < ApplicationController
 		end
 		
 		def destroy
+			Book.destroy(params[:id])
 			
+			redirect_to user_path(session[:user_id])
 		end	
 		
 	  

@@ -17,6 +17,6 @@
 
 <br>
 
-<%= form_for @book do |f| %>
+<%= form_for @book, method: :DELETE do |f| %>
 	<%= f.submit "Remove From Library" %>
 <% end %>
