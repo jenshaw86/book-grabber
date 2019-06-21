@@ -7,8 +7,10 @@
 
     <div>
         <h3>Get Started</h3>
-        <a href="<%= new_user_path %>">Sign Up</a>
-        <a href="<%= login_path %>">Log in</a> 
+        <% if session[:user_id] == nil %>
+            <a href="<%= new_user_path %>"><button type="button" class="btn btn-primary">Sign Up</button></a>
+            <a href="<%= login_path %>"><button type="button" class="btn btn-primary">Login</button></a> 
+        <% end %>
     </div>
 
     <div>
