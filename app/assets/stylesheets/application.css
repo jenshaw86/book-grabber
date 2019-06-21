@@ -57,3 +57,12 @@
     bottom: 0;
     line-height: .5em;
  }
+ 
+ .tasks-list {
+	 text-align: center;
+ }
+ 
+ .tasks-item {
+	 display: inline-block;
+	 padding-inline-start: 0px;
+ }

@@ -3,23 +3,24 @@
 <div>
 	<div>
 			<h4>Open Transactions</h4><br>
-		<div>
+			<div>
 		    <h5>Your requests:</h5>
-		        <% open_transactions = @user.sent_transactions.select do |t| %>
-		            <% t.open == 1%>
-		        <% end %>
-		        <% if open_transactions.count == 0 %>
-		            <span>(No requests pending)</span>
-		        <% else %>
-		            <ol>
-		                <% open_transactions.each do |t| %>
-		                    <li><%= link_to t.book_title, book_path(t.book) %> by <%= t.book_author %><br>
-		                    held by <%= t.receiver_name %></li>
-		                <% end %>
-		            </ol>
-		        <% end %>
-		    </ul>
-		</div>
+        <% open_transactions = @user.sent_transactions.select do |t| %>
+            <% t.open == 1%>
+        <% end %>
+        <% if open_transactions.count == 0 %>
+            <span>(No requests pending)</span>
+        <% else %>
+        	<div class="tasks-list">
+            <ol class="tasks-item">
+                <% open_transactions.each do |t| %>
+                    <li><%= link_to t.book_title, book_path(t.book) %> by <%= t.book_author %><br>
+                    held by <%= t.receiver_name %></li>
+                <% end %>
+            </ol>
+          </div>
+        <% end %>
+			</div>
 		
 		<br>
 		
@@ -31,7 +32,8 @@
 		    <% if open_transactions.count == 0 %>
 		        <span>(No requests pending)</span>
 		    <% else %>
-		        <ol>
+		    	<div class="tasks-list">
+		        <ol class="tasks-item">
 		            <% open_transactions.each do |t| %>
 		                <li><%= link_to t.book_title, book_path(t.book) %> by <%= t.book_author %><br>
 		                by <%= t.sender_name %></li>
@@ -51,6 +53,7 @@
 		                </div>
 		            <% end %>
 		        </ol>
+		      </div>
 		    <% end %>
 		</div>
 	</div>
@@ -67,12 +70,14 @@
 	            <% if closed_transactions.count == 0 %>
 	                <span>You've never requested a book!</span>
 	            <% else %>
-	                <ol>
+	            	<div class="tasks-list">
+	                <ol class="tasks-item">
 	                    <% closed_transactions.each do |t| %>
 	                        <li><%= link_to t.book_title, book_path(t.book) %> by <%= t.book_author %><br>
 	                        held by <%= t.receiver_name %></li>
 	                    <% end %>
 	                </ol>
+	              </div>
 	            <% end %>
 	    </div>
 	    
@@ -86,12 +91,14 @@
 	        <% if closed_transactions.count == 0 %>
 	            <span>You haven't received a book request yet!</span>
 	        <% else %>
-	            <ol>
+	        	<div class="tasks-list">
+	            <ol class="tasks-item">
 	                <% closed_transactions.each do |t| %>
 	                    <li><%= link_to t.book_title, book_path(t.book) %> by <%= t.book_author %><br>
 	                    held by <%= t.receiver_name %></li>
 	                <% end %>
 	            </ol>
+	          </div>
 	        <% end %>
 	    </div>
 	</div>
