@@ -14,7 +14,7 @@
         	<div class="tasks-list">
             <ol class="tasks-item">
                 <% open_transactions.each do |t| %>
-                    <li><%= link_to t.book_title, book_path(t.book) %> by <%= t.book_author %><br>
+                    <li style="text-align: left;"><%= link_to t.book_title, book_path(t.book) %> by <%= t.book_author %><br>
                     held by <%= t.receiver_name %></li>
                 <% end %>
             </ol>
@@ -35,7 +35,7 @@
 		    	<div class="tasks-list">
 		        <ol class="tasks-item">
 		            <% open_transactions.each do |t| %>
-		                <li><%= link_to t.book_title, book_path(t.book) %> by <%= t.book_author %><br>
+		                <li style="text-align: left;"><%= link_to t.book_title, book_path(t.book) %> by <%= t.book_author %><br>
 		                by <%= t.sender_name %></li>
 		                <div>
 			                <div style="display: inline-block;">
@@ -73,7 +73,7 @@
 	            	<div class="tasks-list">
 	                <ol class="tasks-item">
 	                    <% closed_transactions.each do |t| %>
-	                        <li><%= link_to t.book_title, book_path(t.book) %> by <%= t.book_author %><br>
+	                        <li style="text-align: left;"><%= link_to t.book_title, book_path(t.book) %> by <%= t.book_author %><br>
 	                        held by <%= t.receiver_name %></li>
 	                    <% end %>
 	                </ol>
@@ -94,7 +94,7 @@
 	        	<div class="tasks-list">
 	            <ol class="tasks-item">
 	                <% closed_transactions.each do |t| %>
-	                    <li><%= link_to t.book_title, book_path(t.book) %> by <%= t.book_author %><br>
+	                    <li style="text-align: left;"><%= link_to t.book_title, book_path(t.book) %> by <%= t.book_author %><br>
 	                    held by <%= t.receiver_name %></li>
 	                <% end %>
 	            </ol>
