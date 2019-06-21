@@ -4,7 +4,7 @@
 	<div>
 			<h4>Open Transactions</h4><br>
 			<div>
-		    <h5>Your requests:</h5>
+		    <p class="sub-header">Your requests:</p>
         <% open_transactions = @user.sent_transactions.select do |t| %>
             <% t.open == 1%>
         <% end %>
@@ -25,7 +25,7 @@
 		<br>
 		
 		<div>
-		    <h5>Received requests:</h5>
+		    <p class="sub-header">Received requests:</p>
 		    <% open_transactions = @user.received_transactions.select do |t| %>
 		        <% t.open == 1 %>
 		    <% end %>
@@ -63,7 +63,7 @@
 	<div>
 	    <h4>Closed Transactions</h4><br>
 	    <div>
-	        <h5>Requests made:</h5>
+	        <p class="sub-header">Requests made:</p>
 	            <% closed_transactions = @user.sent_transactions.select do |t| %>
 	                <% t.open == 0%>
 	            <% end %>
@@ -84,7 +84,7 @@
 	    <br>
 	    
 	    <div>
-	        <h5>Requests received:</h5>
+	        <p class="sub-header">Requests received:</p>
 	        <% closed_transactions = @user.received_transactions.select do |t| %>
 	            <% t.open == 0%>
 	        <% end %>
