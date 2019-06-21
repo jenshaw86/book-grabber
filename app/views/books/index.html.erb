@@ -1,6 +1,16 @@
 <h3>Browse All Books</h3>
-<ul>
-<% @books.each do |book| %>
-    <li><%= link_to book.title, book %> - <%= link_to book.author.name, book.author %></li>
-<% end %>
-</ul>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Title</th>
+      <th scope="col">Author</th>
+    </tr>
+  <tbody>
+    <% @books.each do |book| %>
+        <tr>
+        <td><%= link_to book.title, book %></td>
+        <td><%= link_to book.author.name, book.author %></td>
+        </tr>
+    <% end %>
+  </tbody>
+</table>
