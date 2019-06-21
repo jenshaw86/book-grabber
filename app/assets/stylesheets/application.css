@@ -20,6 +20,19 @@
     width: 100%;
  }
 
+ h1, h3 {
+   font-family: 'Open Sans', sans-serif;
+ }
+
+ p, a {
+   font-family: 'Raleway', sans-serif;
+ }
+
+ .table {
+    width: 65%;
+    text-align: left;   
+ }
+
  .container {
      text-align: center;
  }
@@ -29,16 +42,20 @@
  }
  
  .navbar-light .navbar-nav .nav-link {
-    color: #e8e8e8;
+    color: #e8e8e8;   
+    font-family: 'Open Sans', sans-serif;
+
  }
 
  .navbar-light .navbar-nav .active>.nav-link, .navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .show>.nav-link {
     color: #e8e8e8;
+    font-family: 'Open Sans', sans-serif;
 
  }
 
  .navbar-light .navbar-brand {
-    color: #5588a3;    
+    color: #5588a3;  
+    font-family: 'Open Sans', sans-serif;
  }
 
  .welcome {
@@ -56,4 +73,13 @@
     margin-right: auto; 
     bottom: 0;
     line-height: .5em;
+    font-weight: 300;
  }
+
+ .container .login {
+   position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+ }
+
