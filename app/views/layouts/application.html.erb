@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>BookTrader</title>
+    <title>Book Grabber</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -14,7 +14,8 @@
   <nav class="navbar navbar-expand-lg navbar-light">
   <a class="navbar-brand" style="padding-bottom: 0.33em" href="/home">Book Grabber</a>
     <div class="navbar-nav">
-      <a class="nav-item nav-link active" href="/home">Home <span class="sr-only">(current)</span></a>
+<!-- 	    redundant home link -->
+<!--       <a class="nav-item nav-link active" href="/home">Home <span class="sr-only">(current)</span></a> -->
       <% if session[:user_id] != nil %>
         <a class="nav-item nav-link" href="/books">Browse Books</a>
         <a class="nav-item nav-link" href="<%= user_path(session[:user_id])%>">My Library</a>
