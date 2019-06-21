@@ -1,6 +1,20 @@
-<h3><%= @genre.name %> Books</h3>
-<ul>
-    <% @genre.books.each do |book| %>
-        <li><%= link_to book.title, book %></li>
-    <% end %>
-</ul>   
+<div class="container">
+    <h3><%= @genre.name %> Books</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Author</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @genre.books.each do |book| %>
+            <tr>
+                <td><%= link_to book.title, book %></td>
+                <td><%= link_to book.author.name, book.author %></td>
+                <%# add author_name to book model %>
+            </tr>
+            <% end %>
+        </tbody>
+    </table>
+</div>
