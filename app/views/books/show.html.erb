@@ -1,39 +1,40 @@
-<table class="table">
-	<tr>
-	<th colspan="2"><h3><%= @book.title %></h3></th>
-	</tr>
-	<tr>
-	<th>Author:</th>
-	<td><%= link_to @book.author.name, author_path(@book.author) %></td>
-	<tr>
-	<tr>
-	<th>Genre:</th>
-	<td><%= link_to @book.genre_name, genre_path(@book.genre) %></td>
-	<tr>
-	<tr>
-	<th>Description</th>
-	<td><%= @book.description %></td>
-	<tr>
-	<tr>
-	<th>Current Holder:</th>
-	<td><%= link_to @book.user.name, user_path(@book.user) %></td>
-	<tr>
-</table>
-<% records = Transaction.all.select do |transaction| %>
-	<% transaction.book_id == @book.id && transaction.open == 1 %>
-<% end %>
-<% if records.count == 0 && @book.user_id != session[:user_id] %>
-	<%= form_for @transaction do |f| %>
-		<%= f.hidden_field :book_id, value: @book.id %>
-		<%= f.hidden_field :receiver_id, value: @book.user_id %>
-		<%= f.hidden_field :sender_id, value: session[:user_id] %>
-		<%= f.hidden_field :open, value: 1 %>
-		<button type="submit" class="btn btn-success">Request Book</button>
+<div class="table-container">
+	<h3><%= @book.title %></h3>
+	<table class="table">
+		<tr>
+			<th>Author:</th>
+			<td><%= link_to @book.author.name, author_path(@book.author) %></td>
+		<tr>
+		<tr>
+			<th>Genre:</th>
+			<td><%= link_to @book.genre_name, genre_path(@book.genre) %></td>
+		<tr>
+		<tr>
+			<th>Description</th>
+			<td><%= @book.description %></td>
+		<tr>
+		<tr>
+			<th>Current Holder:</th>
+			<td><%= link_to @book.user.name, user_path(@book.user) %></td>
+		<tr>
+	</table>
+	<% records = Transaction.all.select do |transaction| %>
+		<% transaction.book_id == @book.id && transaction.open == 1 %>
 	<% end %>
-<% end %>
+	
+	<% if records.count == 0 && @book.user_id != session[:user_id] %>
+		<%= form_for @transaction do |f| %>
+			<%= f.hidden_field :book_id, value: @book.id %>
+			<%= f.hidden_field :receiver_id, value: @book.user_id %>
+			<%= f.hidden_field :sender_id, value: session[:user_id] %>
+			<%= f.hidden_field :open, value: 1 %>
+			<button type="submit" class="btn btn-success">Request Book</button>
+		<% end %>
+	<% end %>
 
-<% if session[:user_id] == @book.user_id %>
-	<%= form_for @book, url: edit_book_path, method: :GET do |f| %>
-		<button type="submit" class="btn btn-warning">Edit/Delete Book</button>		
+	<% if session[:user_id] == @book.user_id %>
+		<%= form_for @book, url: edit_book_path, method: :GET do |f| %>
+			<button type="submit" class="btn btn-warning">Edit/Delete Book</button>		
+		<% end %>
 	<% end %>
-<% end %>
+</div>
