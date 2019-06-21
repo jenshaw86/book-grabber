@@ -1,16 +1,18 @@
-<h3>Browse All Books</h3>
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">Title</th>
-      <th scope="col">Author</th>
-    </tr>
-  <tbody>
-    <% @books.each do |book| %>
+<div class="container">
+    <h3>Browse All Books</h3>
+    <table class="table">
+    <thead>
         <tr>
-        <td><%= link_to book.title, book %></td>
-        <td><%= link_to book.author.name, book.author %></td>
+        <th scope="col">Title</th>
+        <th scope="col">Author</th>
         </tr>
-    <% end %>
-  </tbody>
-</table>
+    <tbody>
+        <% @books.each do |book| %>
+            <tr>
+            <td><%= link_to book.title, book %></td>
+            <td><%= link_to book.author.name, book.author %></td>
+            </tr>
+        <% end %>
+    </tbody>
+    </table>
+</div>
