@@ -11,7 +11,7 @@
             <% @author.books.each do |book| %>
                 <tr>
                     <td><%= link_to book.title, book %></td>
-                    <td><%= link_to book.genre.name, book.genre %>
+                    <td><%= link_to book.genre_name, book.genre %>
                 </tr>
             <% end %> 
         </tbody>
