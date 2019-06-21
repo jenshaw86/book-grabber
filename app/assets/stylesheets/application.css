@@ -101,4 +101,17 @@
    top: 50%;
    left: 50%;
    transform: translate(-50%, -50%);
-}
+ }
+ 
+ .tasks-list {
+	 text-align: center;
+ }
+ 
+ .tasks-item {
+	 display: inline-block;
+	 padding-inline-start: 0px;
+ }
+ 
+ .sub-header {
+	 font-weight: 700;
+ }

@@ -3,48 +3,57 @@
 <div>
 	<div>
 			<h4>Open Transactions</h4><br>
-		<div>
-		    <h5>Your requests:</h5>
-		        <% open_transactions = @user.sent_transactions.select do |t| %>
-		            <% t.open == 1%>
-		        <% end %>
-		        <% if open_transactions.count == 0 %>
-		            <span>(No requests pending)</span>
-		        <% else %>
-		            <ol>
-		                <% open_transactions.each do |t| %>
-		                    <li><%= link_to t.book_title, book_path(t.book) %> by <%= t.book_author %><br>
-		                    held by <%= t.receiver_name %></li>
-		                <% end %>
-		            </ol>
-		        <% end %>
-		    </ul>
-		</div>
+			<div>
+		    <p class="sub-header">Your requests:</p>
+        <% open_transactions = @user.sent_transactions.select do |t| %>
+            <% t.open == 1%>
+        <% end %>
+        <% if open_transactions.count == 0 %>
+            <span>(No requests pending)</span>
+        <% else %>
+        	<div class="tasks-list">
+            <ol class="tasks-item">
+                <% open_transactions.each do |t| %>
+                    <li><%= link_to t.book_title, book_path(t.book) %> by <%= t.book_author %><br>
+                    held by <%= t.receiver_name %></li>
+                <% end %>
+            </ol>
+          </div>
+        <% end %>
+			</div>
 		
 		<br>
 		
 		<div>
-		    <h5>Received requests:</h5>
+		    <p class="sub-header">Received requests:</p>
 		    <% open_transactions = @user.received_transactions.select do |t| %>
 		        <% t.open == 1 %>
 		    <% end %>
 		    <% if open_transactions.count == 0 %>
 		        <span>(No requests pending)</span>
 		    <% else %>
-		        <ol>
+		    	<div class="tasks-list">
+		        <ol class="tasks-item">
 		            <% open_transactions.each do |t| %>
 		                <li><%= link_to t.book_title, book_path(t.book) %> by <%= t.book_author %><br>
 		                by <%= t.sender_name %></li>
-		                <%= form_for t, url: accept_path, method: :post do |f| %>
-		                    <%= f.hidden_field :received_transaction_id, value: t.id %>
-		                    <%= f.submit "Accept" %>
-		                <% end %>
-		                <%= form_for t, url: decline_path, method: :post do |f| %>
-		                    <%= f.hidden_field :received_transaction_id, value: t.id %>
-		                    <%= f.submit "Decline" %>
-		                <% end %>
+		                <div>
+			                <div style="display: inline-block;">
+				                <%= form_for t, url: accept_path, method: :post do |f| %>
+			                    <%= f.hidden_field :received_transaction_id, value: t.id %>
+			                    <%= f.submit "Accept", class: "btn btn-primary" %>
+												<% end %>
+			                </div>
+			                <div style="display: inline-block;">
+				                <%= form_for t, url: decline_path, method: :post do |f| %>
+			                    <%= f.hidden_field :received_transaction_id, value: t.id %>
+			                    <%= f.submit "Decline", class: "btn btn-secondary" %>
+												<% end %>
+											</div>
+		                </div>
 		            <% end %>
 		        </ol>
+		      </div>
 		    <% end %>
 		</div>
 	</div>
@@ -54,38 +63,42 @@
 	<div>
 	    <h4>Closed Transactions</h4><br>
 	    <div>
-	        <h5>Requests made:</h5>
+	        <p class="sub-header">Requests made:</p>
 	            <% closed_transactions = @user.sent_transactions.select do |t| %>
 	                <% t.open == 0%>
 	            <% end %>
 	            <% if closed_transactions.count == 0 %>
 	                <span>You've never requested a book!</span>
 	            <% else %>
-	                <ol>
+	            	<div class="tasks-list">
+	                <ol class="tasks-item">
 	                    <% closed_transactions.each do |t| %>
 	                        <li><%= link_to t.book_title, book_path(t.book) %> by <%= t.book_author %><br>
 	                        held by <%= t.receiver_name %></li>
 	                    <% end %>
 	                </ol>
+	              </div>
 	            <% end %>
 	    </div>
 	    
 	    <br>
 	    
 	    <div>
-	        <h5>Requests received:</h5>
+	        <p class="sub-header">Requests received:</p>
 	        <% closed_transactions = @user.received_transactions.select do |t| %>
 	            <% t.open == 0%>
 	        <% end %>
 	        <% if closed_transactions.count == 0 %>
 	            <span>You haven't received a book request yet!</span>
 	        <% else %>
-	            <ol>
+	        	<div class="tasks-list">
+	            <ol class="tasks-item">
 	                <% closed_transactions.each do |t| %>
 	                    <li><%= link_to t.book_title, book_path(t.book) %> by <%= t.book_author %><br>
 	                    held by <%= t.receiver_name %></li>
 	                <% end %>
 	            </ol>
+	          </div>
 	        <% end %>
 	    </div>
 	</div>
