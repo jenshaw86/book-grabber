@@ -66,13 +66,11 @@
  .navbar-light .navbar-nav .nav-link {
     color: #e8e8e8;   
     font-family: 'Open Sans', sans-serif;
-
  }
 
  .navbar-light .navbar-nav .active>.nav-link, .navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .show>.nav-link {
     color: #e8e8e8;
     font-family: 'Open Sans', sans-serif;
-
  }
 
  .navbar-light .navbar-brand {
@@ -98,20 +96,13 @@
     font-weight: 300;
  }
 
- .container .login {
+ .container .login, .signup {
    position: fixed;
    top: 50%;
    left: 50%;
    transform: translate(-50%, -50%);
  }
 
-.containter .signup {
-   position: fixed;
-   top: 50%;
-   left: 50%;
-   transform: translate(-50%, -50%);
- }
- 
  .tasks-list {
 	 text-align: center;
  }
