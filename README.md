@@ -1,24 +1,19 @@
-# README
+# Book Grabber
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This web application offers a book exchange service to its users. Users may create an account and add books to build their personal library within the app. Users may browse the entire collection of all books from all users in the app. Upon finding a book of interest, the user may create a request to get a book from another user. Book requests, including those made by the user and those made to the user, may be managed on the user's Tasks page. 
 
-Things you may want to cover:
+Book Grabber was built was Rails 5.2.3 and uses bcrypt to protect sensitive data.
 
-* Ruby version
 
-* System dependencies
+## Installation
 
-* Configuration
+Download the repository from GitHub: [Book Grabber](https://github.com/jenshaw86/book-trader)
 
-* Database creation
+Once downloaded, run "bundle install" in the terminal to set the gem dependencies. Also from the terminal, run "rails db:migrate" and "rails db:seed" to get started with some sample data. Start the local server with "rails s", and visit localhost:3000/home in the browser to get started.
 
-* Database initialization
 
-* How to run the test suite
+### Contributors
 
-* Services (job queues, cache servers, search engines, etc.)
+Jenny Shaw, student at Flatiron School Seattle (https://github.com/jenshaw86)
 
-* Deployment instructions
-
-* ...
+Christopher Cabell, student at Flatiron School Seattle (https://github.com/fut0k0/)
