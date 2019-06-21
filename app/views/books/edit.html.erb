@@ -1,22 +1,36 @@
-<h3>Edit Book</h3>
+<div class="container">
+	<h3>Edit Book</h3>
+	<div>
+		<%= form_for @book do |f| %>
+			<div class="form-group">
+				<%= f.label :title %>
+				<%= f.text_field :title, class: "form-control" %>
+			</div>
+			<div class="form-group">
+				<%= f.label "Short Description" %>
+				<%= f.text_field :description, class: "form-control" %>
+			</div>
+			<div class="form-group">
+				<%= f.label "Author" %>
+				<div class="input-group">
+					<%= f.collection_select :author_id, Author.all, :id, :name %>
+				</div>
+			</div>
+			<div class="form-group">
+				<%= f.label "Genre" %>
+				<div class="input-group">
+					<%= f.collection_select :genre_id, Genre.all, :id, :name %>
+				</div>
+			</div>
+				<%= f.hidden_field :user_id, value: session[:user_id] %><br>
+			<div class="form-group">
+				<%= f.submit "Submit Changes", class: "btn btn-primary" %>
+			</div>
+		<% end %>
+	</div>
+	<br>
 
-<%= form_for @book do |f| %>
-	Title: <%= f.text_field :title %><br>
-	
-	Short Description: <%= f.text_field :description %><br>
-
-	Author: <%= f.collection_select :author_id, Author.all, :id, :name %><br>
-
-	Genre: <%= f.collection_select :genre_id, Genre.all, :id, :name %><br>
-
-	<%= f.hidden_field :user_id, value: session[:user_id] %><br>
-	
-	<%= f.submit "Submit Changes" %>
-	
-<% end %>
-
-<br>
-
-<%= form_for @book, method: :DELETE do |f| %>
-	<%= f.submit "Remove From Library" %>
-<% end %>
+	<%= form_for @book, method: :DELETE do |f| %>
+		<%= f.submit "Remove From Library", class: "btn btn-warning"  %>
+	<% end %>
+</div>
