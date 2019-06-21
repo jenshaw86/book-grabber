@@ -17,3 +17,5 @@ Once downloaded, run "bundle install" in the terminal to set the gem dependencie
 Jenny Shaw, student at Flatiron School Seattle (https://github.com/jenshaw86)
 
 Christopher Cabell, student at Flatiron School Seattle (https://github.com/fut0k0/)
+
+Aidiris Rivera, student at Flatiron School Seattle
