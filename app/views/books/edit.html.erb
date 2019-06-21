@@ -1,5 +1,5 @@
 <h3>Edit Book</h3>
-<div>
+<div class="form-container">
 	<%= form_for @book do |f| %>
 		<div class="form-group">
 			<%= f.label :title %>
@@ -7,7 +7,7 @@
 		</div>
 		<div class="form-group">
 			<%= f.label "Short Description" %>
-			<%= f.text_field :description, class: "form-control" %>
+			<%= f.text_area :description, class: "form-control" %>
 		</div>
 		<div class="form-group">
 			<%= f.label "Author" %>
@@ -26,9 +26,9 @@
 			<%= f.submit "Submit Changes", class: "btn btn-primary" %>
 		</div>
 	<% end %>
+		<%= form_for @book, method: :DELETE do |f| %>
+		<%= f.submit "Remove From Library", class: "btn btn-warning"  %>
+	<% end %>
 </div>
-<br>
 
-<%= form_for @book, method: :DELETE do |f| %>
-	<%= f.submit "Remove From Library", class: "btn btn-warning"  %>
-<% end %>
+
