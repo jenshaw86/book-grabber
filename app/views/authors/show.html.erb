@@ -1,6 +1,19 @@
-<h3>Books by <%= @author.name %></h1>
-<ul>
-    <% @author.books.each do |book| %>
-        <li><%= link_to book.title, book %></li>
-    <% end %>
-</ul>   
+<div class="container">
+    <h3>Books by<br><%= @author.name %></h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Genre</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @author.books.each do |book| %>
+                <tr>
+                    <td><%= link_to book.title, book %></td>
+                    <td><%= link_to book.genre.name, book.genre %>
+                </tr>
+            <% end %> 
+        </tbody>
+    </table>   
+</div>
