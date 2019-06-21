@@ -16,7 +16,12 @@
 
  body {
     background-color: #dff0ea;
-    color: #00334e
+    color: #00334e;
+    width: 100%;
+ }
+
+ .container {
+     text-align: center;
  }
 
  .navbar {
@@ -34,4 +39,21 @@
 
  .navbar-light .navbar-brand {
     color: #5588a3;    
+ }
+
+ .welcome {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+ }
+
+ .container .stats {
+    position: absolute;
+    left: 0;
+    right: 0; 
+    margin-left: auto; 
+    margin-right: auto; 
+    bottom: 0;
+    line-height: .5em;
  }

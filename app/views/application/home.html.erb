@@ -1,31 +1,23 @@
-<div class="container">
+
+<div class="welcome">
     <h1>Welcome to Book Grabber</h1>
+    <p>Looking for a book? Find it right here.</p>
+    
     <div>
-        <h4>Looking for a book? Find it right here.</h4>
-    </div>
-		
-		<br>
-		
-    <div>
-        <h4>Get Started</h4>
         <% if session[:user_id] == nil %>
-            <a href="<%= new_user_path %>"><button type="button" class="btn btn-primary">Sign Up</button></a>
-            <a href="<%= login_path %>"><button type="button" class="btn btn-primary">Login</button></a> 
+            <h4>Get Started</h4>
+            <div>
+                <a href="<%= new_user_path %>"><button type="button" class="btn btn-primary">Sign Up</button></a>
+                <a href="<%= login_path %>"><button type="button" class="btn btn-primary">Login</button></a> 
+            </div>
         <% end %>
     </div>
-		
-		<br><br>
-		
-    <div>
-        <h5>Book Grabber Service Statistics</h5>
-				<ul>
-	        <li>Book Trader currently has <%= @users.size %> users and <%= @books.size %> books in circulation.</li>
-	
-	        <li>Books span <%= @genres.size %> genres from <%= @authors.size %> authors.</li>
-	
-	        <li>Our users have made <%= @transactions.size%> transactions.</li>
-	
-	        <li>The most active trader is <%= User.most_active_name %> with <%= User.most_transactions_count %> transactions. </li>
-				</ul>
-    </div>
+</div>
+    
+<div class="stats">
+    <p><strong>Book Grabber Service Statistics</strong></p>
+    <p>Book Trader currently has <%= @users.size %> users and <%= @books.size %> books in circulation.</p>
+    <p>Books span <%= @genres.size %> genres from <%= @authors.size %> authors.</p>
+    <p>Our users have made <%= @transactions.size%> transactions.</p>
+    <p>The most active trader is <%= User.most_active_name %> with <%= User.most_transactions_count %> transactions. </p>
 </div>
