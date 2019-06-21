@@ -1,23 +1,21 @@
-<div class="container">
-	<h3><%= @user.name %>'s Library</h3>
-	<table class="table">
-		<thead>
+<h3><%= @user.name %>'s Library</h3>
+<table class="table">
+	<thead>
+		<tr>
+			<th>Title</th>
+			<th>Author</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @user.books.each do |book| %>
 			<tr>
-				<th>Title</th>
-				<th>Author</th>
+				<td><%= link_to book.title, book_path(book) %></td>
+				<td><%= link_to book.author.name, author_path(book.author_id) %>
 			</tr>
-		</thead>
-		<tbody>
-			<% @user.books.each do |book| %>
-				<tr>
-					<td><%= link_to book.title, book_path(book) %></td>
-					<td><%= link_to book.author.name, author_path(book.author_id) %>
-				</tr>
-			<% end %> 
-		</tbody>
-	</table>
+		<% end %> 
+	</tbody>
+</table>
 
 <% if session[:user_id] == @user.id %>
 	<a href="<%= new_book_path %>"><button type="button" class="btn btn-primary">Add a Book</button></a>
 <% end %>
-</div>
