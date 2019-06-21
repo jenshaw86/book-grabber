@@ -25,3 +25,4 @@ b6 = Book.create(title: "Ms. Roberts And The Car", description: "A baffling tale
 b7 = Book.create(title: "Stand", description: "About standing", genre_id: 2, author_id: 2, user_id: 4)
 
 t1 = Transaction.create(book_id: 1, sender_id: 1, receiver_id: 2, open: 1)
+t2 = Transaction.create(book_id: 2, sender_id: 2, receiver_id: 4, open: 0)
