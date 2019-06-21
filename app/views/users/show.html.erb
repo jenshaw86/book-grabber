@@ -4,3 +4,9 @@
 		<li><%= link_to book.title, book_path(book) %></li>
 	<% end %> 
 </ul>
+
+<br>
+
+<%= form_tag(new_book_path, method: "GET") do %>
+	<%= submit_tag "Add Book To Library" %>
+<% end %>
